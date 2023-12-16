@@ -37,6 +37,11 @@ def square():
                 mimetype='application/json'
             )
 
-        return result
     else:
-        return 'Content-Type not supported!'
+        result = Response(
+            response='Content-Type not supported!',
+            status=HTTPStatus.UNPROCESSABLE_ENTITY,
+            mimetype='application/json'
+        )
+
+    return result
