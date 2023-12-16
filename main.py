@@ -1,4 +1,8 @@
-from flask import Flask, request
+from http import HTTPStatus
+
+import json
+
+from flask import Flask, request, Response
 from src.functions.dummy_function import square_number
 
 app = Flask(__name__)
@@ -13,10 +17,26 @@ def ping():
 def square():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
-        json = request.json
+        input_json = request.json
 
-        input_number = json['input']
+        input_number = input_json['input']
 
-        return {'result': square_number(input_number)}
+        try:
+            result_number = square_number(input_number)
+
+            result = Response(
+                response=json.dumps({'result': result_number}),
+                status=HTTPStatus.OK,
+                mimetype='application/json'
+            )
+
+        except TypeError:
+            result = Response(
+                response='Input error - input should be numerical',
+                status=HTTPStatus.UNPROCESSABLE_ENTITY,
+                mimetype='application/json'
+            )
+
+        return result
     else:
         return 'Content-Type not supported!'
