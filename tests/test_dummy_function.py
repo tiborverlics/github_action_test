@@ -10,7 +10,7 @@ class TestSquare(unittest.TestCase):
 
         expected_result = 9
 
-        actual_result = dummy_function.square(input_number)
+        actual_result = dummy_function.square_number(input_number)
 
         self.assertEqual(actual_result, expected_result)
 
@@ -20,7 +20,7 @@ class TestSquare(unittest.TestCase):
 
         expected_result = 4.494400000000001
 
-        actual_result = dummy_function.square(input_number)
+        actual_result = dummy_function.square_number(input_number)
 
         self.assertEqual(actual_result, expected_result)
 
@@ -29,7 +29,7 @@ class TestSquare(unittest.TestCase):
         input_number = 'some text'
 
         with self.assertRaises(Exception) as context:
-            dummy_function.square(input_number)
+            dummy_function.square_number(input_number)
 
         self.assertTrue('Type error - Input should be numerical' in str(context.exception))
 
