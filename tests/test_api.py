@@ -1,7 +1,7 @@
-import json
 import unittest
 
 from main import app
+
 # set our application to testing mode
 app.testing = True
 
@@ -52,9 +52,6 @@ class TestApi(unittest.TestCase):
                 expected_result
             )
 
-
-
-
     def test_valid_input(self):
         with app.test_client() as client:
 
@@ -74,29 +71,6 @@ class TestApi(unittest.TestCase):
                 actual_result,
                 expected_result
             )
-
-    #def test_main(self):
-    #    with app.test_client() as client:
-    #        # send data as POST form to endpoint
-    #        sent = {'return_url': 'my_test_url'}
-    #        result = client.post(
-    #            '/',
-    #            data=sent
-    #        )
-    #        # check result from server with expected data
-    #        self.assertEqual(
-    #            result.data,
-    #            json.dumps(sent)
-    #        )
-
-
-
-import unittest
-
-
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)  # add assertion here
 
 
 if __name__ == '__main__':
