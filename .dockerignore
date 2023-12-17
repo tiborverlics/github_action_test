@@ -1,0 +1,16 @@
+# Ignore .github
+.github/*
+
+# Ignore venv
+venv/*
+
+# Ignore tests
+tests/*
+
+# Ignore gitignore
+.gitignore
+
+# Re-include the file or directory named "src" that may have been previously
+# excluded. Note that you cannot re-include files in subdirectories that have
+# been previously excluded at a higher level
+!src
